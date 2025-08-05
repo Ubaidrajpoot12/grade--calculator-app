@@ -1,7 +1,7 @@
 
 import streamlit as st
 
-st.title("Percentage & Grade Calculator")
+st.title("📊 Percentage & Grade Calculator")
 
 marks = st.number_input("Enter Obtained Marks")
 total = st.number_input("Enter Total Marks")
@@ -34,3 +34,4 @@ else:
         st.error("Total marks must be greater than 0.")
 
    
+
