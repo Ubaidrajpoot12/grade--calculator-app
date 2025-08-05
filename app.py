@@ -1,19 +1,3 @@
-import streamlit as st
-
-# 🎨 Custom background and styles
-page_bg = """
-<style>
-[data-testid="stAppViewContainer"] {
-    background-image: url("https://images.unsplash.com/photo-1584697964403-a83aa8f5e7f3");
-    background-size: cover;
-    background-position: center;
-}
-[data-testid="stHeader"] {
-    background: rgba(0,0,0,0);
-}
-</style>
-"""
-st.markdown(page_bg, unsafe_allow_html=True)
 
 st.title("📊 Percentage & Grade Calculator")
 
@@ -64,5 +48,6 @@ Remarks: {remark}
         file_name="grade_report.txt",
         mime="text/plain"
     )
+
 
 
