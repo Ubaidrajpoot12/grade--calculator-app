@@ -29,9 +29,10 @@ if st.button("Calculate"):
     else:
         grade = "Fail"
         remark = "Don't give up! good luck for next time🌱"
-    st.success(f"Percentage: {percentage:.2f}%\nGrade: {grade}")
+    st.success(f"Percentage: {percentage:.2f}%\nGrade: {grade}\nRemarks: {remark}")
 else:
         st.error("Total marks must be greater than 0.")
 
    
+
 
