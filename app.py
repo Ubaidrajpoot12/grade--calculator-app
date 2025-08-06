@@ -27,9 +27,10 @@ st.markdown("""<div class='main-card'>""", unsafe_allow_html=True)
 
 st.markdown("<h2 style='text-align: center;'>📊 Grade Calculator Dashboard</h2>", unsafe_allow_html=True)
 
+# 🧑 Optional Username Input
+username = st.text_input("Enter Your Name (optional)")
+
 # 📝 Input Section
-# 👉 Ask for user's name
-name = st.text_input("Enter your Name")
 marks = st.number_input("Enter Obtained Marks", min_value=0.0, format="%.2f")
 total = st.number_input("Enter Total Marks", min_value=1.0, format="%.2f")
 
@@ -63,16 +64,18 @@ if st.button("Calculate Grade"):
         color = "#d32f2f"  # red
 
     # ✅ Output Section
+    user_display = f"<b>{username}</b>, your " if username else "Your "
+
     st.markdown(f"""
     <div style='text-align: center; padding-top: 1rem;'>
-        <h4>🎯 <b>Percentage:</b> {percentage:.2f}%</h4>
-        <h4>🏷️ <b>Grade:</b> <span style='color: {color};'>{grade}</span></h4>
-        <h4>💬 <b>Remarks:</b> <i>{remark}</i></h4>
+        <h4>🎯 {user_display}percentage is: {percentage:.2f}%</h4>
+        <h4>🏷️ Grade: <span style='color: {color};'><b>{grade}</b></span></h4>
+        <h4>💬 Remarks: <i>{remark}</i></h4>
     </div>
     """, unsafe_allow_html=True)
 
     # 📄 Downloadable Report
-    report = f"Marks Obtained: {marks}\nTotal Marks: {total}\nPercentage: {percentage:.2f}%\nGrade: {grade}\nRemarks: {remark}"
+    report = f"Name: {username if username else 'N/A'}\nMarks Obtained: {marks}\nTotal Marks: {total}\nPercentage: {percentage:.2f}%\nGrade: {grade}\nRemarks: {remark}"
 
     st.download_button(
         label="📥 Download Report",
@@ -82,11 +85,3 @@ if st.button("Calculate Grade"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
-
-
-
-
-
-
-
-
