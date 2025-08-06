@@ -1,74 +1,21 @@
 import streamlit as st
 
-# 🌓 Dark Mode Toggle
-if "dark_mode" not in st.session_state:
-    st.session_state.dark_mode = False
+st.markdown("""<div style='background: linear-gradient(135deg, #e0f7fa, #fff); padding: 2rem; border-radius: 10px; max-width: 600px; margin: auto;'>""", unsafe_allow_html=True)
 
-# Check for theme toggle before UI rendering
-if st.session_state.get("theme_toggle", False):
-    st.session_state.dark_mode = not st.session_state.dark_mode
-    st.session_state.theme_toggle = False
-    st.experimental_rerun()
-
-# Apply Dark or Light Mode Styles
-if st.session_state.dark_mode:
-    page_bg = """
-    <style>
-    [data-testid="stAppViewContainer"] {
-        background: #121212;
-        color: #ffffff;
-    }
-    .main-card {
-        background-color: #1e1e1e;
-        color: #ffffff;
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-        max-width: 500px;
-        margin: auto;
-        font-family: 'Segoe UI', sans-serif;
-    }
-    </style>
-    """
-else:
-    page_bg = """
-    <style>
-    [data-testid="stAppViewContainer"] {
-        background: linear-gradient(135deg, #e0f7fa, #fff);
-        padding: 2rem;
-    }
-    [data-testid="stHeader"] {
-        background-color: rgba(0,0,0,0);
-    }
-    .main-card {
-        background-color: #ffffff;
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        max-width: 500px;
-        margin: auto;
-        font-family: 'Segoe UI', sans-serif;
-    }
-    </style>
-    """
-
-st.markdown(page_bg, unsafe_allow_html=True)
+st.markdown("""
+<h2 style='text-align: center;'>📊 Grade Calculator Dashboard</h2>
+""", unsafe_allow_html=True)
 
 # ⋮ More Options Menu
 with st.expander("⋮ More Options", expanded=False):
     selected_option = st.radio("Choose an Option", [
         "None",
-        "Toggle Dark Mode",
         "Reset Form",
         "About App"
     ])
 
-    if selected_option == "Toggle Dark Mode":
-        st.session_state.theme_toggle = True
-
-    elif selected_option == "Reset Form":
+    if selected_option == "Reset Form":
         st.experimental_rerun()
-
     elif selected_option == "About App":
         st.info("""
         🎓 **Grade Calculator Dashboard**
@@ -76,10 +23,6 @@ with st.expander("⋮ More Options", expanded=False):
         Developed by: [Your Name or Link]  
         Powered by Streamlit
         """)
-
-st.markdown("""<div class='main-card'>""", unsafe_allow_html=True)
-
-st.markdown("<h2 style='text-align: center;'>📊 Grade Calculator Dashboard</h2>", unsafe_allow_html=True)
 
 # 🧑 Optional Username Input
 username = st.text_input("Enter Your Name (optional)")
