@@ -4,36 +4,31 @@ import streamlit as st
 if "dark_mode" not in st.session_state:
     st.session_state.dark_mode = False
 
-# Apply Dark or Light Mode Styles
-# Check for theme toggle before anything else
+# Check for theme toggle before UI rendering
 if st.session_state.get("theme_toggle", False):
     st.session_state.dark_mode = not st.session_state.dark_mode
     st.session_state.theme_toggle = False
     st.experimental_rerun()
 
-# ⋮ More Options Menu
-with st.expander("⋮ More Options", expanded=False):
-    selected_option = st.radio("Choose an Option", [
-        "None",
-        "Toggle Dark Mode",
-        "Reset Form",
-        "About App"
-    ])
-
-    if selected_option == "Toggle Dark Mode":
-        st.session_state.theme_toggle = True
-
-    elif selected_option == "Reset Form":
-        st.experimental_rerun()
-
-    elif selected_option == "About App":
-        st.info("""
-        🎓 **Grade Calculator Dashboard**
-        Version: 1.0  
-        Developed by: [Your Name or Link]  
-        Powered by Streamlit
-        """)
-
+# Apply Dark or Light Mode Styles
+if st.session_state.dark_mode:
+    page_bg = """
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background: #121212;
+        color: #ffffff;
+    }
+    .main-card {
+        background-color: #1e1e1e;
+        color: #ffffff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        max-width: 500px;
+        margin: auto;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    </style>
     """
 else:
     page_bg = """
@@ -69,10 +64,11 @@ with st.expander("⋮ More Options", expanded=False):
     ])
 
     if selected_option == "Toggle Dark Mode":
-        st.session_state.dark_mode = not st.session_state.dark_mode
-        st.experimental_rerun()
+        st.session_state.theme_toggle = True
+
     elif selected_option == "Reset Form":
         st.experimental_rerun()
+
     elif selected_option == "About App":
         st.info("""
         🎓 **Grade Calculator Dashboard**
@@ -143,4 +139,3 @@ if st.button("Calculate Grade"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
-
