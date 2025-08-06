@@ -53,7 +53,7 @@ if st.button("Calculate Result"):
     percentage = (marks / total) * 100
 
     # 🎓 Grade & Remarks
-    if percentage>=90
+    if percentage>=90:
         grade= "A+"
         remark= "Out standing"
     if percentage >= 80:
@@ -103,6 +103,7 @@ if st.button("Calculate Result"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
 
 
