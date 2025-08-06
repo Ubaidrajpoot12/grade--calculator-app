@@ -23,6 +23,27 @@ page_bg = """
 """
 st.markdown(page_bg, unsafe_allow_html=True)
 
+# ⋮ More Options Menu
+with st.expander("⋮ More Options", expanded=False):
+    selected_option = st.radio("Choose an Option", [
+        "None",
+        "Toggle Dark Mode",
+        "Reset Form",
+        "About App"
+    ])
+
+    if selected_option == "Toggle Dark Mode":
+        st.warning("⚠️ Dark mode is under development. Stay tuned!")
+    elif selected_option == "Reset Form":
+        st.experimental_rerun()
+    elif selected_option == "About App":
+        st.info("""
+        🎓 **Grade Calculator Dashboard**
+        Version: 1.0  
+        Developed by: [Your Name or Link]  
+        Powered by Streamlit
+        """)
+
 st.markdown("""<div class='main-card'>""", unsafe_allow_html=True)
 
 st.markdown("<h2 style='text-align: center;'>📊 Grade Calculator Dashboard</h2>", unsafe_allow_html=True)
