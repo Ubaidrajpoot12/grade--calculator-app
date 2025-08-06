@@ -1,10 +1,6 @@
 import streamlit as st
 
-st.markdown("""<div style='background: linear-gradient(135deg, #e0f7fa, #fff); padding: 2rem; border-radius: 10px; max-width: 600px; margin: auto;'>""", unsafe_allow_html=True)
-
-st.markdown("""
-<h2 style='text-align: center;'>📊 Grade Calculator Dashboard</h2>
-""", unsafe_allow_html=True)
+st.set_page_config(page_title="Grade Calculator", layout="centered")
 
 # ⋮ More Options Menu
 with st.expander("⋮ More Options", expanded=False):
@@ -19,10 +15,33 @@ with st.expander("⋮ More Options", expanded=False):
     elif selected_option == "About App":
         st.info("""
         🎓 **Grade Calculator Dashboard**
-        Version: 1.5
-        Developed by: [Ubaid-ur-Rehman]  
+        Version: 1.0  
+        Developed by: [Your Name or Link]  
         Powered by Streamlit
         """)
+
+st.markdown("""
+    <style>
+    .main-card {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        max-width: 100%;
+        margin: auto;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    @media (max-width: 600px) {
+        .main-card {
+            padding: 15px;
+        }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+st.markdown("""<div class='main-card'>""", unsafe_allow_html=True)
+
+st.markdown("<h2 style='text-align: center;'>📊 Grade Calculator Dashboard</h2>", unsafe_allow_html=True)
 
 # 🧑 Optional Username Input
 username = st.text_input("Enter Your Name (optional)")
@@ -82,4 +101,3 @@ if st.button("Calculate Grade"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
-
