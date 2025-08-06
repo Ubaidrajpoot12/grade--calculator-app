@@ -5,8 +5,7 @@ st.set_page_config(page_title="Grade Calculator", layout="centered")
 # ⋮ More Options Menu
 with st.expander("⋮ More Options", expanded=False):
     selected_option = st.radio("Choose an Option", [
-        "None",
-        "Reset Form",
+        "None"
         "About App"
     ])
 
@@ -54,6 +53,9 @@ if st.button("Calculate Result"):
     percentage = (marks / total) * 100
 
     # 🎓 Grade & Remarks
+    if percentage>=90
+        grade= "A+"
+        remark= "Out standing"
     if percentage >= 80:
         grade = "A+"
         remark = "Excellent! 🎉"
@@ -101,6 +103,7 @@ if st.button("Calculate Result"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
 
 
