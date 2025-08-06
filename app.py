@@ -14,7 +14,7 @@ with st.expander("⋮ More Options", expanded=False):
         st.experimental_rerun()
     elif selected_option == "About App":
         st.info("""
-        🎓 **Grade Calculator Dashboard**
+        🎓 **Result Calculator Dashboard**
         Version: 1.0  
         Developed by: [Your Name or Link]  
         Powered by Streamlit
@@ -41,7 +41,7 @@ st.markdown("""
 
 st.markdown("""<div class='main-card'>""", unsafe_allow_html=True)
 
-st.markdown("<h2 style='text-align: center;'>📊 Grade Calculator Dashboard</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'>📊 Result Calculator Dashboard</h2>", unsafe_allow_html=True)
 
 # 🧑 Optional Username Input
 username = st.text_input("Enter Your Name (optional)")
@@ -101,3 +101,4 @@ if st.button("Calculate Grade"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
