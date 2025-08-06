@@ -15,8 +15,8 @@ with st.expander("⋮ More Options", expanded=False):
     elif selected_option == "About App":
         st.info("""
         🎓 **Result Calculator Dashboard**
-        Version: 1.0  
-        Developed by: [Your Name or Link]  
+        Version: 1.5  
+        Developed by: [Ubaid-ur-Rehman]  
         Powered by Streamlit
         """)
 
@@ -101,5 +101,6 @@ if st.button("Calculate Result"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
 
