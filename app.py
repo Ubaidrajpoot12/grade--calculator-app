@@ -50,7 +50,7 @@ username = st.text_input("Enter Your Name (optional)")
 marks = st.number_input("Enter Obtained Marks", min_value=0.0, format="%.2f")
 total = st.number_input("Enter Total Marks", min_value=1.0, format="%.2f")
 
-if st.button("Calculate Grade"):
+if st.button("Calculate Result"):
     percentage = (marks / total) * 100
 
     # 🎓 Grade & Remarks
@@ -101,4 +101,5 @@ if st.button("Calculate Grade"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
