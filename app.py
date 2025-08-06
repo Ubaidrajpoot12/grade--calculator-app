@@ -26,7 +26,7 @@ st.markdown(page_bg, unsafe_allow_html=True)
 st.markdown("""<div class='main-card'>""", unsafe_allow_html=True)
 
 st.markdown("<h2 style='text-align: center;'>📊 Grade Calculator Dashboard</h2>", unsafe_allow_html=True)
-st.markdown("<h4> <b> Created by ubaid</b></h4>")
+st.markdown("Created by ubaid")
 # 📝 Input Section
 marks = st.number_input("Enter Obtained Marks", min_value=0.0, format="%.2f")
 total = st.number_input("Enter Total Marks", min_value=1.0, format="%.2f")
@@ -80,5 +80,6 @@ if st.button("Calculate Grade"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
 
