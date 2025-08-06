@@ -1,26 +1,51 @@
 import streamlit as st
 
-# 🎨 Background Styling
-page_bg = """
-<style>
-[data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #e0f7fa, #fff);
-    padding: 2rem;
-}
-[data-testid="stHeader"] {
-    background-color: rgba(0,0,0,0);
-}
-.main-card {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    max-width: 500px;
-    margin: auto;
-    font-family: 'Segoe UI', sans-serif;
-}
-</style>
-"""
+# 🌓 Dark Mode Toggle
+if "dark_mode" not in st.session_state:
+    st.session_state.dark_mode = False
+
+# Apply Dark or Light Mode Styles
+if st.session_state.dark_mode:
+    page_bg = """
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background: #121212;
+        color: #ffffff;
+    }
+    .main-card {
+        background-color: #1e1e1e;
+        color: #ffffff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        max-width: 500px;
+        margin: auto;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    </style>
+    """
+else:
+    page_bg = """
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background: linear-gradient(135deg, #e0f7fa, #fff);
+        padding: 2rem;
+    }
+    [data-testid="stHeader"] {
+        background-color: rgba(0,0,0,0);
+    }
+    .main-card {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        max-width: 500px;
+        margin: auto;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    </style>
+    """
+
 st.markdown(page_bg, unsafe_allow_html=True)
 
 # ⋮ More Options Menu
@@ -33,7 +58,8 @@ with st.expander("⋮ More Options", expanded=False):
     ])
 
     if selected_option == "Toggle Dark Mode":
-        st.warning("⚠️ Dark mode is under development. Stay tuned!")
+        st.session_state.dark_mode = not st.session_state.dark_mode
+        st.experimental_rerun()
     elif selected_option == "Reset Form":
         st.experimental_rerun()
     elif selected_option == "About App":
