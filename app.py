@@ -14,7 +14,6 @@ with st.expander("⋮ More Options", expanded=False):
         st.info("""
         🎓 **Result Calculator Dashboard**
         Version: 1.5
-        Release: 5Aug,2025
         Developed by: [Ubaid-ur-Rehman]  
         Powered by Streamlit
         """)
@@ -103,6 +102,7 @@ if st.button("Calculate Result"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
 
 
