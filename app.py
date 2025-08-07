@@ -1,17 +1,19 @@
 import streamlit as st
 
 st.set_page_config(page_title="Grade Calculator", layout="centered")
-
-# ⋮ More Options Menu
 with st.expander("⋮ More Options", expanded=False):
     selected_option = st.radio("Choose an Option", [
         "About App",
         "Help",
         "Feedback",
-        "Reset Form"  # ✅ Added here
+        "Reset Form"
     ])
 
     if selected_option == "Reset Form":
+        st.session_state.marks = 0.0
+        st.session_state.total = 1.0
+        st.session_state.username = ""
+        st.session_state.reset = True
         st.experimental_rerun()
 
     elif selected_option == "About App":
@@ -37,9 +39,10 @@ with st.expander("⋮ More Options", expanded=False):
         st.markdown("""
         💬 **We Value Your Feedback!**  
         If you have suggestions, bugs to report, or want to improve this tool, please contact:  
-        📧 Email: ubaid.example@email.com  
+        📧 Email: abdul.rehman6098@email.com  
         🐱 GitHub: [github.com/Ubaidrajpoot12](https://github.com/Ubaidrajpoot12)
         """)
+
 
 
 st.markdown("""
@@ -126,6 +129,7 @@ if st.button("Calculate Result"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
 
 
