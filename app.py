@@ -21,7 +21,7 @@ with st.expander("⋮ More Options", expanded=False):
         st.markdown("""
         🆘 **Help Guide**  
         - Enter your obtained marks and total marks.  
-        - Click on **Calculate Grade** to view your result.  
+        - Click on **Calculate Result** to view your result.  
         - Optionally, enter your name for a personalized report.  
         - Use **Download Report** to save your result.  
         - Access settings using the **⋮ More Options** menu.
@@ -121,6 +121,7 @@ if st.button("Calculate Result"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
 
 
