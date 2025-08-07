@@ -6,17 +6,9 @@ with st.expander("⋮ More Options", expanded=False):
         "About App",
         "Help",
         "Feedback",
-        "Reset Form"
     ])
 
-    if selected_option == "Reset Form":
-        st.session_state.marks = 0.0
-        st.session_state.total = 1.0
-        st.session_state.username = ""
-        st.session_state.reset = True
-        st.experimental_rerun()
-
-    elif selected_option == "About App":
+    if selected_option == "About App":
         st.markdown("""
         🎓 **Result Calculator Dashboard**  
         **Version:** 1.5  
@@ -72,8 +64,8 @@ st.markdown("<h2 style='text-align: center;'>📊 Result Calculator Dashboard</h
 username = st.text_input("Enter Your Name (optional)")
 
 # 📝 Input Section
-marks = st.number_input("Enter Obtained Marks", min_value=0.0, format="%.2f")
-total = st.number_input("Enter Total Marks", min_value=1.0, format="%.2f")
+marks = st.number_input("Enter Obtained Marks" )
+total = st.number_input("Enter Total Marks")
 
 if st.button("Calculate Result"):
     percentage = (marks / total) * 100
@@ -129,6 +121,7 @@ if st.button("Calculate Result"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
 
 
