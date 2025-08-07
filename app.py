@@ -11,12 +11,13 @@ with st.expander("⋮ More Options", expanded=False):
     if selected_option == "Reset Form":
         st.experimental_rerun()
     elif selected_option == "About App":
-        st.info("""
-        🎓 **Result Calculator Dashboard**
-        Version: 1.5
-        Developed by: [Ubaid-ur-Rehman]  
-        Powered by Streamlit
+        st.markdown("""
+        🎓 **Result Calculator Dashboard**  
+        **Version:** 1.5  
+        **Developed by:** Ubaid-ur-Rehman  
+        **Powered by:** Streamlit
         """)
+
 
 st.markdown("""
     <style>
@@ -102,6 +103,7 @@ if st.button("Calculate Result"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
 
 
