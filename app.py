@@ -5,18 +5,40 @@ st.set_page_config(page_title="Grade Calculator", layout="centered")
 # ⋮ More Options Menu
 with st.expander("⋮ More Options", expanded=False):
     selected_option = st.radio("Choose an Option", [
-        "About App"
+        "About App",
+        "Help",
+        "Feedback",
+        "Reset Form"  # ✅ Added here
     ])
 
     if selected_option == "Reset Form":
         st.experimental_rerun()
+
     elif selected_option == "About App":
         st.markdown("""
-        🎓 **Result Calculator Dashboard** 
-        **Reset Form**
+        🎓 **Result Calculator Dashboard**  
         **Version:** 1.5  
+        **Released On:** 5 Aug 2025  
         **Developed by:** Ubaid-ur-Rehman  
         **Powered by:** Streamlit
+        """)
+
+    elif selected_option == "Help":
+        st.markdown("""
+        🆘 **Help Guide**  
+        - Enter your obtained marks and total marks.  
+        - Click on **Calculate Grade** to view your result.  
+        - Optionally, enter your name for a personalized report.  
+        - Use **Download Report** to save your result.  
+        - Access settings using the **⋮ More Options** menu.
+        """)
+
+    elif selected_option == "Feedback":
+        st.markdown("""
+        💬 **We Value Your Feedback!**  
+        If you have suggestions, bugs to report, or want to improve this tool, please contact:  
+        📧 Email: ubaid.example@email.com  
+        🐱 GitHub: [github.com/Ubaidrajpoot12](https://github.com/Ubaidrajpoot12)
         """)
 
 
@@ -104,6 +126,7 @@ if st.button("Calculate Result"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
 
 
