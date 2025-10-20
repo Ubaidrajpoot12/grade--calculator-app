@@ -15,7 +15,7 @@ with st.expander("⋮ More Options", expanded=False):
     if selected_option == "About App":
         st.markdown("""
         🎓 **Result Calculator Dashboard**  
-        **Version:** 1.6  
+        **Version:** 1.5  
         **Released On:** 5 Aug 2025  
         **Developed by:** Ubaid-ur-Rehman  
         **Powered by:** Streamlit
@@ -25,21 +25,21 @@ with st.expander("⋮ More Options", expanded=False):
         st.markdown("""
         🆘 **Help Guide**  
         - Enter your obtained and total marks.  
-        - Click **Calculate Result** to view your grade.  
+        - Click on **Calculate Result** to view your grade.  
         - Optionally, enter your name for a personalized report.  
         - Use **Download Report** to save your result.  
-        - Access more options from the **⋮ Menu**.
+        - Access settings and info using the **⋮ More Options** menu.
         """)
 
     elif selected_option == "Feedback":
         st.markdown("""
         💬 **We Value Your Feedback!**  
-        Found a bug or suggestion? Contact:  
+        Found a bug or want to suggest improvements? Contact:  
         📧 **abdul.rehman6098@email.com**  
         🐱 GitHub: [github.com/Ubaidrajpoot12](https://github.com/Ubaidrajpoot12)
         """)
 
-# 💠 CSS Styling
+# 💠 CSS Styling for mobile + cards
 st.markdown("""
     <style>
     .main-card {
@@ -63,7 +63,7 @@ st.markdown("<div class='main-card'>", unsafe_allow_html=True)
 
 st.markdown("<h2 style='text-align: center;'>📊 Result Calculator Dashboard</h2>", unsafe_allow_html=True)
 
-# 🧑 Name Input
+# 🧑 Optional Name Input
 username = st.text_input("Enter Your Name (optional)")
 
 # 🧮 Input Fields
@@ -110,29 +110,33 @@ if st.button("Calculate Result"):
     </div>
     """, unsafe_allow_html=True)
 
-    # 🟢 Circular Percentage Meter
-    fig = go.Figure(go.Indicator(
-        mode="gauge+number",
-        value=percentage,
-        number={'suffix': "%", 'font': {'size': 36}},
-        gauge={
-            'axis': {'range': [0, 100]},
-            'bar': {'color': color},
-            'bgcolor': "#e0e0e0",
-            'borderwidth': 2,
-            'bordercolor': "#888",
-            'steps': [
-                {'range': [0, 40], 'color': '#ffcdd2'},
-                {'range': [40, 60], 'color': '#fff59d'},
-                {'range': [60, 80], 'color': '#c8e6c9'},
-                {'range': [80, 100], 'color': '#a5d6a7'}
-            ],
-        },
-        title={'text': "Performance", 'font': {'size': 20}}
-    ))
+    # 🔵 Full Circular Progress Meter
+    fig = go.Figure(data=[go.Pie(
+        values=[percentage, 100 - percentage],
+        hole=0.7,
+        marker_colors=[color, "#e6e6e6"],
+        textinfo='none'
+    )])
 
-    fig.update_layout(height=300, margin=dict(t=30, b=0, l=0, r=0))
-    st.plotly_chart(fig, use_container_width=True)
+    fig.update_layout(
+        showlegend=False,
+        margin=dict(t=0, b=0, l=0, r=0),
+        annotations=[
+            dict(
+                text=f"<b>{percentage:.1f}%</b>",
+                x=0.5, y=0.5,
+                font_size=26,
+                font_color=color,
+                showarrow=False
+            )
+        ],
+        height=300,
+        width=300,
+    )
+
+    st.markdown("<div style='display:flex; justify-content:center;'>", unsafe_allow_html=True)
+    st.plotly_chart(fig, use_container_width=False)
+    st.markdown("</div>", unsafe_allow_html=True)
 
     # 📄 Downloadable Report
     report = f"""
