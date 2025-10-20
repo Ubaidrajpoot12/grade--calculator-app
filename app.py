@@ -149,7 +149,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 
     # 📄 Downloadable Report
-    report = f"""
+report = f"""
 Name: {username if username else 'N/A'}
 Marks Obtained: {marks}
 Total Marks: {total}
@@ -166,4 +166,5 @@ Remarks: {remark}
     )
 
 st.markdown("</div>", unsafe_allow_html=True)
+
 
