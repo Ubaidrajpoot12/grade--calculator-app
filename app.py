@@ -75,7 +75,7 @@ if st.button("Calculate Result"):
         grade= "A+"
         remark= "Out standing"
     if percentage >= 80:
-        grade = "A--"
+        grade = "A+"
         remark = "Excellent! 🎉"
         color = "#2e7d32"  # green
     elif percentage >= 70:
@@ -121,6 +121,7 @@ if st.button("Calculate Result"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
 
 
