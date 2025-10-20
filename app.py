@@ -1,6 +1,8 @@
 import streamlit as st
 
 st.set_page_config(page_title="Grade Calculator", layout="centered")
+
+# ⋮ More Options Menu
 with st.expander("⋮ More Options", expanded=False):
     selected_option = st.radio("Choose an Option", [
         "About App",
@@ -36,7 +38,7 @@ with st.expander("⋮ More Options", expanded=False):
         """)
 
 
-
+# 💠 Styling (Mobile Friendly)
 st.markdown("""
     <style>
     .main-card {
@@ -64,20 +66,21 @@ st.markdown("<h2 style='text-align: center;'>📊 Result Calculator Dashboard</h
 username = st.text_input("Enter Your Name (optional)")
 
 # 📝 Input Section
-marks = st.number_input("Enter Obtained Marks" )
-total = st.number_input("Enter Total Marks")
+marks = st.number_input("Enter Obtained Marks", min_value=0.0)
+total = st.number_input("Enter Total Marks", min_value=1.0)
 
 if st.button("Calculate Result"):
     percentage = (marks / total) * 100
 
     # 🎓 Grade & Remarks
-    if percentage>=90:
-        grade= "A+"
-        remark= "Out standing"
+    if percentage >= 90:
+        grade = "A+"
+        remark = "Outstanding 🌟"
+        color = "#1b5e20"
     elif percentage >= 80:
         grade = "A+"
         remark = "Excellent! 🎉"
-        color = "#2e7d32"  # green
+        color = "#2e7d32"
     elif percentage >= 70:
         grade = "A"
         remark = "Great job! 👍"
@@ -97,7 +100,7 @@ if st.button("Calculate Result"):
     else:
         grade = "Fail"
         remark = "Don't give up! Good luck for next time 🌱"
-        color = "#d32f2f"  # red
+        color = "#d32f2f"
 
     # ✅ Output Section
     user_display = f"<b>{username}</b>, your " if username else "Your "
@@ -121,10 +124,6 @@ if st.button("Calculate Result"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
-
-
-
-
 
 
 
