@@ -97,7 +97,7 @@ if st.button("Calculate Result"):
     else:
         grade = "Fail"
         remark = "Don't give up! Try again 🌱"
-        color = "#d32f2f
+        color = "#d32f2f"
 
 # 🧾 Result Display
 user_display = f"<b>{username}</b>, your " if username else "Your "
@@ -167,5 +167,6 @@ Remarks: {remark}
     )
 
 st.markdown("</div>", unsafe_allow_html=True)
+
 
 
