@@ -1,5 +1,7 @@
 import streamlit as st
+import plotly.graph_objects as go
 
+# 🏷️ Page Config
 st.set_page_config(page_title="Grade Calculator", layout="centered")
 
 # ⋮ More Options Menu
@@ -13,8 +15,8 @@ with st.expander("⋮ More Options", expanded=False):
     if selected_option == "About App":
         st.markdown("""
         🎓 **Result Calculator Dashboard**  
-        **Version:** 1.5  
-        **Released On:** 24 Oct 2025  
+        **Version:** 1.6  
+        **Released On:** 5 Aug 2025  
         **Developed by:** Ubaid-ur-Rehman  
         **Powered by:** Streamlit
         """)
@@ -22,23 +24,22 @@ with st.expander("⋮ More Options", expanded=False):
     elif selected_option == "Help":
         st.markdown("""
         🆘 **Help Guide**  
-        - Enter your obtained marks and total marks.  
-        - Click on **Calculate Result** to view your result.  
+        - Enter your obtained and total marks.  
+        - Click **Calculate Result** to view your grade.  
         - Optionally, enter your name for a personalized report.  
         - Use **Download Report** to save your result.  
-        - Access settings using the **⋮ More Options** menu.
+        - Access more options from the **⋮ Menu**.
         """)
 
     elif selected_option == "Feedback":
         st.markdown("""
         💬 **We Value Your Feedback!**  
-        If you have suggestions, bugs to report, or want to improve this tool, please contact:  
-        📧 Email: abdul.rehman6098@email.com  
+        Found a bug or suggestion? Contact:  
+        📧 **abdul.rehman6098@email.com**  
         🐱 GitHub: [github.com/Ubaidrajpoot12](https://github.com/Ubaidrajpoot12)
         """)
 
-
-# 💠 Styling (Mobile Friendly)
+# 💠 CSS Styling
 st.markdown("""
     <style>
     .main-card {
@@ -58,51 +59,47 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown("""<div class='main-card'>""", unsafe_allow_html=True)
+st.markdown("<div class='main-card'>", unsafe_allow_html=True)
 
 st.markdown("<h2 style='text-align: center;'>📊 Result Calculator Dashboard</h2>", unsafe_allow_html=True)
 
-# 🧑 Optional Username Input
+# 🧑 Name Input
 username = st.text_input("Enter Your Name (optional)")
 
-# 📝 Input Section
-marks = st.number_input("Enter Obtained Marks")
-total = st.number_input("Enter Total Marks")
+# 🧮 Input Fields
+marks = st.number_input("Enter Obtained Marks", min_value=0.0)
+total = st.number_input("Enter Total Marks", min_value=1.0)
 
 if st.button("Calculate Result"):
     percentage = (marks / total) * 100
 
-    # 🎓 Grade & Remarks
+    # 🎓 Grade System
     if percentage >= 90:
         grade = "A+"
-        remark = "Outstanding 🌟"
-        color = "#1b5e20"
-    elif percentage >= 80:
-        grade = "A+"
-        remark = "Excellent! 🎉"
+        remark = "Outstanding! 🌟"
         color = "#2e7d32"
-    elif percentage >= 70:
+    elif percentage >= 80:
         grade = "A"
-        remark = "Great job! 👍"
-        color = "#388e3c"
-    elif percentage >= 60:
+        remark = "Excellent! 🎉"
+        color = "#43a047"
+    elif percentage >= 70:
         grade = "B"
-        remark = "Good effort! 😊"
+        remark = "Great job! 👍"
         color = "#fbc02d"
-    elif percentage >= 50:
+    elif percentage >= 60:
         grade = "C"
-        remark = "Needs improvement. 📘"
+        remark = "Good effort! 😊"
         color = "#ffa000"
-    elif percentage >= 40:
+    elif percentage >= 50:
         grade = "D"
-        remark = "Try harder next time. 💪"
+        remark = "Needs improvement. 📘"
         color = "#f57c00"
     else:
         grade = "Fail"
-        remark = "Don't give up! Good luck for next time 🌱"
+        remark = "Don't give up! Try again 🌱"
         color = "#d32f2f"
 
-    # ✅ Output Section
+    # 🧾 Result Display
     user_display = f"<b>{username}</b>, your " if username else "Your "
 
     st.markdown(f"""
@@ -113,8 +110,39 @@ if st.button("Calculate Result"):
     </div>
     """, unsafe_allow_html=True)
 
+    # 🟢 Circular Percentage Meter
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=percentage,
+        number={'suffix': "%", 'font': {'size': 36}},
+        gauge={
+            'axis': {'range': [0, 100]},
+            'bar': {'color': color},
+            'bgcolor': "#e0e0e0",
+            'borderwidth': 2,
+            'bordercolor': "#888",
+            'steps': [
+                {'range': [0, 40], 'color': '#ffcdd2'},
+                {'range': [40, 60], 'color': '#fff59d'},
+                {'range': [60, 80], 'color': '#c8e6c9'},
+                {'range': [80, 100], 'color': '#a5d6a7'}
+            ],
+        },
+        title={'text': "Performance", 'font': {'size': 20}}
+    ))
+
+    fig.update_layout(height=300, margin=dict(t=30, b=0, l=0, r=0))
+    st.plotly_chart(fig, use_container_width=True)
+
     # 📄 Downloadable Report
-    report = f"Name: {username if username else 'N/A'}\nMarks Obtained: {marks}\nTotal Marks: {total}\nPercentage: {percentage:.2f}%\nGrade: {grade}\nRemarks: {remark}"
+    report = f"""
+Name: {username if username else 'N/A'}
+Marks Obtained: {marks}
+Total Marks: {total}
+Percentage: {percentage:.2f}%
+Grade: {grade}
+Remarks: {remark}
+    """
 
     st.download_button(
         label="📥 Download Report",
@@ -123,22 +151,4 @@ if st.button("Calculate Result"):
         mime="text/plain"
     )
 
-st.markdown("""</div>""", unsafe_allow_html=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+st.markdown("</div>", unsafe_allow_html=True)
