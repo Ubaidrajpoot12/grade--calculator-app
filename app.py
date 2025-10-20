@@ -66,8 +66,8 @@ st.markdown("<h2 style='text-align: center;'>📊 Result Calculator Dashboard</h
 username = st.text_input("Enter Your Name (optional)")
 
 # 📝 Input Section
-marks = st.number_input("Enter Obtained Marks", min_value=0.0)
-total = st.number_input("Enter Total Marks", min_value=1.0)
+marks = st.number_input("Enter Obtained Marks", min_value=0)
+total = st.number_input("Enter Total Marks", min_value=0)
 
 if st.button("Calculate Result"):
     percentage = (marks / total) * 100
@@ -124,6 +124,7 @@ if st.button("Calculate Result"):
     )
 
 st.markdown("""</div>""", unsafe_allow_html=True)
+
 
 
 
