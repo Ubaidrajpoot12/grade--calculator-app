@@ -157,8 +157,7 @@ Percentage: {percentage:.2f}%
 Grade: {grade}
 Remarks: {remark}
     """
-
-    st.download_button(
+st.download_button(
         label="📥 Download Report",
         data=report,
         file_name="grade_report.txt",
@@ -166,5 +165,6 @@ Remarks: {remark}
     )
 
 st.markdown("</div>", unsafe_allow_html=True)
+
 
 
