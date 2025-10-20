@@ -97,39 +97,54 @@ if st.button("Calculate Result"):
     else:
         grade = "Fail"
         remark = "Don't give up! Try again 🌱"
-        color = "#d32f2f"
+        color = "#d32f2
 
-    # 🧾 Result Display
-    user_display = f"<b>{username}</b>, your " if username else "Your "
+# 🧾 Result Display
+user_display = f"<b>{username}</b>, your " if username else "Your "
 
-    st.markdown(f"""
-    <div style='text-align: center; padding-top: 1rem;'>
-        <h4>🎯 {user_display}percentage is: {percentage:.2f}%</h4>
-        <h4>🏷️ Grade: <span style='color: {color};'><b>{grade}</b></span></h4>
-        <h4>💬 Remarks: <i>{remark}</i></h4>
-    </div>
-    """, unsafe_allow_html=True)
+st.markdown(f"""
+<div style='text-align: center; padding-top: 1rem;'>
+    <h4>🎯 {user_display}percentage is: {percentage:.2f}%</h4>
+    <h4>🏷️ Grade: <span style='color: {color};'><b>{grade}</b></span></h4>
+    <h4>💬 Remarks: <i>{remark}</i></h4>
+</div>
+""", unsafe_allow_html=True)
 
-    # 🟢 Circular Percentage Meter
-    fig = go.Figure(go.Indicator(
-        mode="gauge+number",
-        value=percentage,
-        number={'suffix': "%", 'font': {'size': 36}},
-        gauge={
-            'axis': {'range': [0, 100]},
-            'bar': {'color': color},
-            'bgcolor': "#e0e0e0",
-            'borderwidth': 2,
-            'bordercolor': "#888",
-            'steps': [
-                {'range': [0, 40], 'color': '#ffcdd2'},
-                {'range': [40, 60], 'color': '#fff59d'},
-                {'range': [60, 80], 'color': '#c8e6c9'},
-                {'range': [80, 100], 'color': '#a5d6a7'}
-            ],
-        },
-        title={'text': "Performance", 'font': {'size': 20}}
-    ))
+# 🔵 Modern Circular Gauge
+fig = go.Figure(go.Indicator(
+    mode="gauge+number",
+    value=percentage,
+    title={'text': "Your Percentage", 'font': {'size': 22}},
+    number={'suffix': "%", 'font': {'size': 26, 'color': "#004aad"}},
+    gauge={
+        'axis': {'range': [0, 100], 'tickwidth': 1, 'tickcolor': "gray"},
+        'bar': {'color': "#00c9a7"},
+        'bgcolor': "white",
+        'borderwidth': 2,
+        'bordercolor': "#ddd",
+        'steps': [
+            {'range': [0, 50], 'color': '#ffe5e5'},
+            {'range': [50, 70], 'color': '#fff7cc'},
+            {'range': [70, 85], 'color': '#d4f8d4'},
+            {'range': [85, 100], 'color': '#a1f0dc'},
+        ],
+        'threshold': {
+            'line': {'color': "#004aad", 'width': 6},
+            'thickness': 0.8,
+            'value': percentage
+        }
+    }
+))
+
+fig.update_layout(
+    height=350,
+    margin=dict(l=30, r=30, t=50, b=0),
+    paper_bgcolor="rgba(0,0,0,0)",
+    font={'color': "#004aad", 'family': "Segoe UI"},
+)
+
+st.plotly_chart(fig, use_container_width=True)
+
 
     fig.update_layout(height=300, margin=dict(t=30, b=0, l=0, r=0))
     st.plotly_chart(fig, use_container_width=True)
@@ -152,3 +167,4 @@ Remarks: {remark}
     )
 
 st.markdown("</div>", unsafe_allow_html=True)
+
