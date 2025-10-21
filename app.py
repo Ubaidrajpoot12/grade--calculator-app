@@ -16,8 +16,9 @@ with st.expander("⋮ More Options", expanded=False):
         st.markdown("""
         🎓 **Result Calculator Dashboard**  
         **Version:** 1.5  
-        **Released On:** 5 Aug 2025  
-        **Developed by:** Ubaid-ur-Rehman  
+        **Released On:** 24 Oct 2025  
+        **Developed by:** Ubaid-ur-Rehman
+        **Owned by:** Lahore City College
         **Powered by:** Streamlit
         """)
 
@@ -156,3 +157,4 @@ Remarks: {remark}
     )
 
 st.markdown("</div>", unsafe_allow_html=True)
+
